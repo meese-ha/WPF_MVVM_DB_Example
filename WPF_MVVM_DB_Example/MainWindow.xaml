@@ -1,0 +1,59 @@
+﻿<Window x:Class="WPF_MVVM_DB_Example.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:cv="clr-namespace:WPF_MVVM_DB_Example.Converters"
+        xmlns:local="clr-namespace:WPF_MVVM_DB_Example"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+        <!--<DataGrid  Grid.Row="0" Grid.Column="0" ItemsSource="{Binding Collection}" AutoGenerateColumns="False" >
+            <DataGrid.Columns >
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="SerialNumber" Binding="{Binding SerialNumber}"/>
+            </DataGrid.Columns>
+
+        </DataGrid>-->
+    <Window.Resources>
+        <cv:LoginCommandParaameter x:Key="LoginCommandParaameterCv" />
+    </Window.Resources>
+
+    <Grid>     
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+
+        
+
+
+        <StackPanel Grid.Row="0" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+            <WrapPanel HorizontalAlignment="Right">
+                <TextBlock Text="Login" Margin="10" />
+                <TextBox x:Name="Id" Width="200" Height="20" Text="{Binding Path=Text, Mode=OneWayToSource}"/>
+            </WrapPanel>
+            <WrapPanel>
+                <TextBlock Text="Password" Margin="10"/>
+                <PasswordBox  x:Name="Pw" Width="200" Height="20" />
+            </WrapPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1">
+            <Button Content="Login" Width="150" Height="20" Margin="20" 
+                    Command="{Binding checkLogingCommand}">
+                <Button.CommandParameter>
+                <MultiBinding Converter="{StaticResource LoginCommandParaameterCv}">
+                        <Binding ElementName="Id" Path="Text" />
+                        <Binding ElementName="Pw" Path="Password"/>
+                    </MultiBinding>
+                </Button.CommandParameter>                  
+            </Button>
+        </StackPanel>
+
+
+    </Grid>
+
+       
+</Window>
