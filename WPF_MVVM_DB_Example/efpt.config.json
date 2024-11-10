@@ -15,6 +15,10 @@
    "T4TemplatePath": null,
    "Tables": [
       {
+         "Name": "[dbo].[Employee]",
+         "ObjectType": 0
+      },
+      {
          "Name": "[dbo].[TempItem]",
          "ObjectType": 0
       }

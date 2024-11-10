@@ -7,14 +7,7 @@
         xmlns:local="clr-namespace:WPF_MVVM_DB_Example"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-        <!--<DataGrid  Grid.Row="0" Grid.Column="0" ItemsSource="{Binding Collection}" AutoGenerateColumns="False" >
-            <DataGrid.Columns >
-                <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
-                <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
-                <DataGridTextColumn Header="SerialNumber" Binding="{Binding SerialNumber}"/>
-            </DataGrid.Columns>
-
-        </DataGrid>-->
+    
     <Window.Resources>
         <cv:LoginCommandParaameter x:Key="LoginCommandParaameterCv" />
     </Window.Resources>

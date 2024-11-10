@@ -1,28 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using WPF_MVVM_DB_Example.ViewModels;
 
 namespace WPF_MVVM_DB_Example.Commands
 {
-    public class Command : ICommand
+    public class LoginCommand : ICommand
     {
-        private readonly MainViewModel mainviewmodel;
+
+        Action<object> _action;
+        Func<object, bool> _func;
 
         public event EventHandler? CanExecuteChanged;
-        Action<object> _execute;
-        //Func<object, bool> _canexecuteMethod;
 
-
-        public Command(Action<object> execute)
+        public LoginCommand(Action<object> action, Func<object, bool> func)
         {
-            this._execute = execute;
+            this._action = action;
+            this._func = func;
         }
-        
+
+
         public bool CanExecute(object? parameter)
         {
             return true;
@@ -30,8 +31,7 @@ namespace WPF_MVVM_DB_Example.Commands
 
         public void Execute(object? parameter)
         {
-            _execute(parameter);
-
+            _action(parameter);
         }
 
 

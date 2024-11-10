@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-
 namespace WPF_MVVM_DB_Example.Models
 {
     public partial class TempItemContext : DbContext
@@ -12,9 +11,9 @@ namespace WPF_MVVM_DB_Example.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source =; database=; User ID=; Password=; Integrated Security=True; Encrypt=False;");
-
+            optionsBuilder.UseSqlServer("");
         }
+
         public TempItemContext()
         {
         }
@@ -24,10 +23,45 @@ namespace WPF_MVVM_DB_Example.Models
         {
         }
 
+        public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<TempItem> TempItems { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Employee>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToTable("Employee");
+
+                entity.Property(e => e.Department)
+                    .HasMaxLength(10)
+                    .HasColumnName("DEPARTMENT")
+                    .IsFixedLength();
+
+                entity.Property(e => e.Id)
+                    .HasMaxLength(50)
+                    .HasColumnName("ID");
+
+                entity.Property(e => e.Level)
+                    .HasMaxLength(10)
+                    .HasColumnName("LEVEL")
+                    .IsFixedLength();
+
+                entity.Property(e => e.Password)
+                    .HasMaxLength(50)
+                    .HasColumnName("PASSWORD");
+
+                entity.Property(e => e.UseYn)
+                    .HasMaxLength(10)
+                    .HasColumnName("USE_YN")
+                    .IsFixedLength();
+
+                entity.Property(e => e.UserId)
+                    .HasMaxLength(50)
+                    .HasColumnName("USER_ID");
+            });
+
             modelBuilder.Entity<TempItem>(entity =>
             {
                 entity.HasNoKey();

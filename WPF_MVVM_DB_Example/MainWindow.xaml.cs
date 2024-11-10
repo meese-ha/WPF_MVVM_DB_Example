@@ -22,5 +22,6 @@ namespace WPF_MVVM_DB_Example
             InitializeComponent();
             this.DataContext = new MainViewModel();
         }
+
     }
 }
