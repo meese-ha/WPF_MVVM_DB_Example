@@ -12,15 +12,12 @@
         <cv:LoginCommandParaameter x:Key="LoginCommandParaameterCv" />
     </Window.Resources>
 
-    <Grid>     
-        
+    <Grid>
+
         <Grid.RowDefinitions>
             <RowDefinition Height="3*"/>
             <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
-
-        
-
 
         <StackPanel Grid.Row="0" VerticalAlignment="Bottom" HorizontalAlignment="Center">
             <WrapPanel HorizontalAlignment="Right">
@@ -29,17 +26,17 @@
             </WrapPanel>
             <WrapPanel>
                 <TextBlock Text="Password" Margin="10"/>
-                <PasswordBox  x:Name="Pw" Width="200" Height="20" />
+                <PasswordBox  x:Name="Pw" Width="200" Height="20" PasswordChar="*"/>
             </WrapPanel>
         </StackPanel>
 
         <StackPanel Grid.Row="1">
             <Button Content="Login" Width="150" Height="20" Margin="20" 
-                    Command="{Binding checkLogingCommand}">
+                    Command="{Binding LoginCommand}">
                 <Button.CommandParameter>
-                <MultiBinding Converter="{StaticResource LoginCommandParaameterCv}">
+                    <MultiBinding Converter="{StaticResource LoginCommandParaameterCv}">
                         <Binding ElementName="Id" Path="Text" />
-                        <Binding ElementName="Pw" Path="Password"/>
+                        <Binding ElementName="Pw" />
                     </MultiBinding>
                 </Button.CommandParameter>                  
             </Button>

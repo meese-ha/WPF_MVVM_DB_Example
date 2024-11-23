@@ -19,10 +19,12 @@ using System.CodeDom.Compiler;
 using System.Security;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Navigation;
+using WPF_MVVM_DB_Example.Main;
 
 namespace WPF_MVVM_DB_Example.ViewModels
 {
-    public class MainViewModel : Base
+    public class MainViewModel : Page
     {
         TempItemContext db = new TempItemContext();
 
@@ -49,20 +51,23 @@ namespace WPF_MVVM_DB_Example.ViewModels
         {
             var Login = (object[])obj;
 
-            var id = Login[0];
-
-            PasswordBox pwbox = (PasswordBox)Login[1];
-            var pw = pwbox.Password;
-
-            if (id != null && pw != null)
+            if (Login[0] != null & Login[1] != null)
             {
+                var id = Login[0];
+
+                PasswordBox pwbox = (PasswordBox)Login[1];
+                var pw = pwbox.Password;
+
                 LoginCheck(id.ToString(), pw);
+            } else
+            {
+                MessageBox.Show("아이디 혹은 비밀번호를 확인해주세요");
             }
+
         }
 
-        private  void LoginCheck(string id, string pw)
+        private void LoginCheck(string id, string pw)
         {
-            //var parameter = (LoginViewModel[])viewModel;
 
             if (id != null && pw != null)
             {
@@ -70,7 +75,11 @@ namespace WPF_MVVM_DB_Example.ViewModels
 
                 if (login != null )
                 {
-                    MessageBox.Show("로그인에 성공하였습니다.");
+                    //NursingMain nursingMain = new NursingMain();
+                    //Uri uri = new Uri("/Main/NursingMain.xaml", UriKind.Relative);
+                    this.NavigationService.Navigate(new Uri("/Main/NursingMain.xaml", UriKind.Absolute));
+
+                    //MessageBox.Show("로그인에 성공하였습니다.");
                 }
                 else MessageBox.Show("아이디 혹은 비밀번호를 확인해주세요");
             }
