@@ -21,14 +21,12 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Navigation;
 using WPF_MVVM_DB_Example.Main;
-
 namespace WPF_MVVM_DB_Example.ViewModels
 {
-    public class MainViewModel : Page
+    public class MainViewModel : BaseViewModel
     {
-        TempItemContext db = new TempItemContext();
+        //TempItemContext db = new TempItemContext();
 
-        public ICommand LoginCommand { get; set; }
 
         public MainViewModel()
         {
@@ -38,54 +36,61 @@ namespace WPF_MVVM_DB_Example.ViewModels
         private void Fill()
         {
 
-            LoginCommand = new LoginCommand(clickEvent, canClickEvent);
 
         }
 
-        private bool canClickEvent(object arg)
-        {
-            return true;
-        }
 
-        private void clickEvent(object obj)
-        {
-            var Login = (object[])obj;
+        //private bool canClickEvent(object arg)
+        //{
+        //    return true;
+        //}
 
-            if (Login[0] != null & Login[1] != null)
-            {
-                var id = Login[0];
+        //private void clickEvent(object obj)
+        //{
+        //    var Login = (object[])obj;
 
-                PasswordBox pwbox = (PasswordBox)Login[1];
-                var pw = pwbox.Password;
+        //    if (Login[0] != null & Login[1] != null)
+        //    {
+        //        var id = Login[0];
 
-                LoginCheck(id.ToString(), pw);
-            } else
-            {
-                MessageBox.Show("아이디 혹은 비밀번호를 확인해주세요");
-            }
+        //        PasswordBox pwbox = (PasswordBox)Login[1];
+        //        var pw = pwbox.Password;
 
-        }
+        //        LoginCheck(id.ToString(), pw);
+        //    } else
+        //    {
+        //        MessageBox.Show("아이디 혹은 비밀번호를 확인해주세요");
+        //    }
 
-        private void LoginCheck(string id, string pw)
-        {
+        //}
 
-            if (id != null && pw != null)
-            {
-                var login = db.Employees.SingleOrDefault(f => f.Id == id && f.Password == pw);
+        //private void LoginCheck(string id, string pw)
+        //{
 
-                if (login != null )
-                {
-                    //NursingMain nursingMain = new NursingMain();
-                    //Uri uri = new Uri("/Main/NursingMain.xaml", UriKind.Relative);
-                    this.NavigationService.Navigate(new Uri("/Main/NursingMain.xaml", UriKind.Absolute));
+        //    if (id != null && pw != null)
+        //    {
+        //        var login = db.Employees.SingleOrDefault(f => f.Id == id && f.Password == pw);
 
-                    //MessageBox.Show("로그인에 성공하였습니다.");
-                }
-                else MessageBox.Show("아이디 혹은 비밀번호를 확인해주세요");
-            }
+        //        if (login != null )
+        //        {
+        //            MessageBox.Show("Good");
+        //            //MainWindow mainWindow = MainWindow.GetInstance();
+        //            //Uri uri = new Uri("/Nursing/NursingMain.xaml", UriKind.Absolute);
+        //            //NavigationService.Navigate(new Uri("/Nursing/NursingMain.xaml", UriKind.Absolute));
+        //            //NavigationService.Navigate(uri);
+
+        //            MainWindow mainWindow = MainWindow.GetInstance();
+        //            mainWindow.Show();
+
+        //            //mainWindow = new Uri("/Nursing/NursingMain.xaml", UriKind.Relative);
+
+        //            //MessageBox.Show("로그인에 성공하였습니다.");
+        //        }
+        //        else MessageBox.Show("아이디 혹은 비밀번호를 확인해주세요");
+        //    }
 
 
-        }
+        //}
 
     }
 }
