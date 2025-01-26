@@ -14,17 +14,17 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WPF_MVVM_DB_Example.ViewModels;
 
-namespace WPF_MVVM_DB_Example.Main.Nusring
+namespace WPF_MVVM_DB_Example.Main.Nursing
 {
     /// <summary>
-    /// NursingMain.xaml에 대한 상호 작용 논리
+    /// login.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class NursingMain : Page
+    public partial class login : Page
     {
-        public NursingMain()
+        public login()
         {
             InitializeComponent();
-            this.DataContext = new MainViewModel();
+            this.DataContext = new LoginViewModel();
         }
     }
 }

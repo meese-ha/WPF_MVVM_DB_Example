@@ -24,8 +24,7 @@ namespace WPF_MVVM_DB_Example.Main
         {
             InitializeComponent();
 
-            var viewmodel = new LoginViewModel();
-            DataContext = viewmodel;
+
         }
 
         //private void PasswordChanged(object sender, RoutedEventArgs e)

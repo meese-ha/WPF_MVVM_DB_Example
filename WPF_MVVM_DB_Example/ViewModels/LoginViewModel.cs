@@ -10,6 +10,9 @@ using WPF_MVVM_DB_Example.Commands;
 using WPF_MVVM_DB_Example.Main;
 using WPF_MVVM_DB_Example.Models;
 using System.Reflection.Metadata;
+using System.Windows.Navigation;
+using WPF_MVVM_DB_Example.Main.Nusring;
+using WPF_MVVM_DB_Example.Main.Nursing;
 
 namespace WPF_MVVM_DB_Example.ViewModels
 {
@@ -20,7 +23,7 @@ namespace WPF_MVVM_DB_Example.ViewModels
 
         private string _id;
         private string _password;
-        private object _log;
+
 
         public string Id
         {
@@ -52,6 +55,7 @@ namespace WPF_MVVM_DB_Example.ViewModels
 
         public LoginViewModel()
         {
+
             LoginCommand = new RelayCommand(Login);
         }
 
@@ -67,14 +71,18 @@ namespace WPF_MVVM_DB_Example.ViewModels
 
 
             if (CkNum > 0) 
-            { 
-                MainWindow mainWindow = new MainWindow();
-                mainWindow.Show();
+            {
+                //MainWindow mainWindow = new MainWindow();
 
-                if(CkNum == 1)
+                if (CkNum == 1)
                 {
-                    //mainWindow.MenuBar.Source = new Uri("Nursing/NursingMain.xaml", UriKind.Relative);
-                    MessageBox.Show("Good");
+                    //mainWindow.Show();
+                    NursingMain nursingMain = new NursingMain();
+                    LoginWindow loginWindow = new LoginWindow();
+                    NavigationService.GetNavigationService(nursingMain);
+
+                    //NavigationService.Navigate(new Uri("Page1.xaml", UriKind.Relative));
+                    MessageBox.Show("성공");
                 }
                 RequestClose?.Invoke();
             } else

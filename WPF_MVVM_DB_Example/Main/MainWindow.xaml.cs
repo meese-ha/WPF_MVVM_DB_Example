@@ -18,17 +18,17 @@ namespace WPF_MVVM_DB_Example.Main
     public partial class MainWindow : Window
     {
 
-        private static MainWindow _Instance = null;
+        //private static MainWindow _Instance = null;
 
 
-        public static MainWindow GetInstance()
-        {
-            if(_Instance == null)
-            {
-                _Instance = new MainWindow();
-            }
-            return _Instance;
-        }
+        //public static MainWindow GetInstance()
+        //{
+        //    if(_Instance == null)
+        //    {
+        //        _Instance = new MainWindow();
+        //    }
+        //    return _Instance;
+        //}
 
 
         public MainWindow()
