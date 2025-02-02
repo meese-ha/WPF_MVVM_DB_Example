@@ -10,7 +10,7 @@
 
     <Grid>
 
-        <Frame x:Name="LoginMain" NavigationUIVisibility="Hidden" />
+        <Frame x:Name="LoginMain" Source="Nursing/login.xaml" />
         <!--<Frame Source="Nursing/login.xaml"></Frame>-->
     </Grid>
 

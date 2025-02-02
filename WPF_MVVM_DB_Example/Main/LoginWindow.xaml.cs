@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WPF_MVVM_DB_Example.Iinterface;
 using WPF_MVVM_DB_Example.ViewModels;
 
 namespace WPF_MVVM_DB_Example.Main
@@ -18,14 +19,15 @@ namespace WPF_MVVM_DB_Example.Main
     /// <summary>
     /// LoginWindow.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class LoginWindow : Window
+    public partial class LoginWindow : Window, IDialog
     {
         public LoginWindow()
         {
             InitializeComponent();
 
-
         }
+
+
 
         //private void PasswordChanged(object sender, RoutedEventArgs e)
         //{
@@ -34,5 +36,17 @@ namespace WPF_MVVM_DB_Example.Main
         //        loginViewModel.Password = ((PasswordBox)sender).Password;
         //    }
         //}
+    }
+
+
+    class AppViewModel : BaseViewModel, IDialogContext
+    {
+        private IContext _context;
+
+        public IContext Context
+        {
+            get => _context;
+            set => this.Set(ref _context, value);
+        }
     }
 }
