@@ -7,14 +7,13 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows;
 using WPF_MVVM_DB_Example.Commands;
-using WPF_MVVM_DB_Example.Main;
+using WPF_MVVM_DB_Example.DialogService.Views;
 using WPF_MVVM_DB_Example.Models;
 using System.Reflection.Metadata;
 using System.Windows.Navigation;
-using WPF_MVVM_DB_Example.Main.Nusring;
-using WPF_MVVM_DB_Example.Main.Nursing;
+using WPF_MVVM_DB_Example.DialogService.Views.Nusring;
 
-namespace WPF_MVVM_DB_Example.ViewModels
+namespace WPF_MVVM_DB_Example.DialogService.ViewModels
 {
     public class LoginViewModel : BaseViewModel
     {
@@ -29,8 +28,8 @@ namespace WPF_MVVM_DB_Example.ViewModels
         {
 
             get { return _id; }
-            set 
-            { 
+            set
+            {
                 _id = value;
                 OnPropertyChanged(nameof(Id));
             }
@@ -70,7 +69,7 @@ namespace WPF_MVVM_DB_Example.ViewModels
             CkNum = LoginCheck(Id, Password);
 
 
-            if (CkNum > 0) 
+            if (CkNum > 0)
             {
                 //MainWindow mainWindow = new MainWindow();
 
@@ -85,7 +84,8 @@ namespace WPF_MVVM_DB_Example.ViewModels
                     MessageBox.Show("성공");
                 }
                 RequestClose?.Invoke();
-            } else
+            }
+            else
             {
                 MessageBox.Show("아이디 혹은 비밀번호를 확인해주세요.");
             }

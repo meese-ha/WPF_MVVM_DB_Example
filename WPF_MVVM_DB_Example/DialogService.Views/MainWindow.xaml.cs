@@ -8,9 +8,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using WPF_MVVM_DB_Example.ViewModels;
+using WPF_MVVM_DB_Example.DialogService.Defines;
 
-namespace WPF_MVVM_DB_Example.Main
+namespace WPF_MVVM_DB_Example.DialogService.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

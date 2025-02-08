@@ -20,8 +20,8 @@ using System.Security;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Navigation;
-using WPF_MVVM_DB_Example.Main;
-namespace WPF_MVVM_DB_Example.ViewModels
+using WPF_MVVM_DB_Example.DialogService.ViewModels;
+namespace WPF_MVVM_DB_Example.DialogService.ViewModels
 {
     public class MainViewModel : BaseViewModel
     {

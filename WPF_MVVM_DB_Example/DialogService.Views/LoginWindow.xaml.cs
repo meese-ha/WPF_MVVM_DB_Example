@@ -11,10 +11,10 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using WPF_MVVM_DB_Example.Iinterface;
-using WPF_MVVM_DB_Example.ViewModels;
+using WPF_MVVM_DB_Example.DialogService.Defines.Iinterface;
+using WPF_MVVM_DB_Example.DialogService.ViewModels;
 
-namespace WPF_MVVM_DB_Example.Main
+namespace WPF_MVVM_DB_Example.DialogService.Views
 {
     /// <summary>
     /// LoginWindow.xaml에 대한 상호 작용 논리
@@ -39,14 +39,14 @@ namespace WPF_MVVM_DB_Example.Main
     }
 
 
-    class AppViewModel : BaseViewModel, IDialogContext
-    {
-        private IContext _context;
+    //public class AppViewModel : ViewBase, IDialogContext
+    //{
+    //    private IContext _context;
 
-        public IContext Context
-        {
-            get => _context;
-            set => this.Set(ref _context, value);
-        }
-    }
+    //    public IContext Context
+    //    {
+    //        get => _context;
+    //        set => this.Set(ref this._context, value);
+    //    }
+    //}
 }

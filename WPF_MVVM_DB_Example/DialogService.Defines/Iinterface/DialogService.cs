@@ -6,7 +6,7 @@ using System.Security.Cryptography.Xml;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WPF_MVVM_DB_Example.Iinterface
+namespace WPF_MVVM_DB_Example.DialogService.Defines.Iinterface
 {
     class DialogService : IDialogService
     {
@@ -17,19 +17,22 @@ namespace WPF_MVVM_DB_Example.Iinterface
         public void Register<TDialog>()
             where TDialog : class, IDialog
         {
+            // TODO : 동기화 처리 필요.
+
             var type = typeof(TDialog);
-            if (this._dialogTypes.Any(d => d.Equals(type)))
+            if (_dialogTypes.Any(d => d.Equals(type)))
             {
                 return;
             }
 
-            this._dialogTypes.Add(type);
+            _dialogTypes.Add(type);
         }
 
-        public void Set<TContext>(TContext context)
-            where TContext : IContext
+        public void Set<TContext>(TContext context) where TContext : IContext
         {
-            this.Set((t) => true, context);
+            // 등록되어 있는 첫번째 Window 를 띄운다.
+
+            Set((t) => true, context);
         }
 
         public void Set<TContext, TDialog>(TContext context)
@@ -37,13 +40,12 @@ namespace WPF_MVVM_DB_Example.Iinterface
             where TDialog : IDialog
         {
             var type = typeof(TDialog);
-            this.Set((t) => t.Equals(type), context);
+            Set((t) => t.Equals(type), context);
         }
 
-        public bool? SetAwait<TContext>(TContext context)
-            where TContext : IContext
+        public bool? SetAwait<TContext>(TContext context) where TContext : IContext
         {
-            return this.Set((t) => true, context, true);
+            return Set((t) => true, context, true);
         }
 
         public bool? SetAwait<TContext, TDialog>(TContext context)
@@ -51,24 +53,24 @@ namespace WPF_MVVM_DB_Example.Iinterface
             where TDialog : IDialog
         {
             var type = typeof(TDialog);
-            return this.Set((t) => t.Equals(type), context, true);
+            return Set((t) => t.Equals(type), context, true);
         }
 
         private bool? Set<TContext>(Func<Type, bool> isExist, TContext context, bool isModal = false)
             where TContext : IContext
         {
-            if (this._dialogTypes.Any(isExist) == false)
+            if (_dialogTypes.Any(isExist) == false)
             {
-                throw new NotImplementedException("There is no mathched dialog type");
+                throw new NotImplementedException("There is no matched dialog type.");
             }
 
-            var dialogType = this._dialogTypes.First(isExist);
+            var dialogType = _dialogTypes.First(isExist);
             var dialog = Activator.CreateInstance(dialogType) as IDialog;
 
-            var datacontext = dialog.DataContext as IDialogContext;
-            datacontext.Context = context;
+            var dataContext = dialog.DataContext as IDialogContext;
+            dataContext.Context = context;
 
-            this._openedDialogs.Add(dialog);
+            _openedDialogs.Add(dialog);
 
             if (isModal == false)
             {
@@ -78,23 +80,20 @@ namespace WPF_MVVM_DB_Example.Iinterface
             }
 
             return dialog.ShowDialog();
-
         }
 
-        public void Out<TContext>(TContext context)
-            where TContext : IContext
+        public void Out<TContext>(TContext context) where TContext : IContext
         {
-            this.Out((d) =>
+            Out((d) =>
             {
-                var datacontext = d.DataContext as IDialogContext;
-                return datacontext.Context.Equals(context);
-
+                var dataContext = d.DataContext as IDialogContext;
+                return dataContext.Context.Equals(context);
             });
         }
 
         private void Out(Func<IDialog, bool> isExist)
         {
-            var opened = this._openedDialogs.Where(isExist).ToList();
+            var opened = _openedDialogs.Where(isExist).ToList();
 
             try
             {
@@ -106,23 +105,22 @@ namespace WPF_MVVM_DB_Example.Iinterface
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                Console.WriteLine(ex);
             }
             finally
             {
                 foreach (var dialog in opened)
                 {
-                    this._openedDialogs.Remove(dialog);
+                    _openedDialogs.Remove(dialog);
                 }
             }
-
         }
 
         public void Out<TContext, TDialog>(TContext context)
             where TContext : IContext
             where TDialog : IDialog
         {
-            this.Out((d) =>
+            Out((d) =>
             {
                 var dialogType = d.GetType();
                 return dialogType.Equals(typeof(TDialog));
@@ -131,25 +129,25 @@ namespace WPF_MVVM_DB_Example.Iinterface
 
         public void Clear()
         {
-            this._openedDialogs.ForEach(d => 
+            _openedDialogs.ForEach(d =>
             {
                 try
                 {
                     d.Close();
                 }
-                catch(Exception ex)
-                { Console.WriteLine(ex.ToString()); }            
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex);
+                }
             });
-            this._openedDialogs.Clear();
-            this._dialogTypes.Clear();
+            _openedDialogs.Clear();
+
+            _dialogTypes.Clear();
         }
 
-        public void Dispose() 
+        public void Dispose()
         {
-            this.Clear();
+            Clear();
         }
-
-
-
     }
 }

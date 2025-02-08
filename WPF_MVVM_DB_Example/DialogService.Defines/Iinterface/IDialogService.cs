@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WPF_MVVM_DB_Example.Iinterface
+namespace WPF_MVVM_DB_Example.DialogService.Defines.Iinterface
 {
     interface IDialogService : IDisposable
     {
@@ -31,7 +31,7 @@ namespace WPF_MVVM_DB_Example.Iinterface
 
         void Out<TContext, TDialog>(TContext context)
             where TContext : IContext
-            where TDialog: IDialog;
+            where TDialog : IDialog;
 
         void Clear();
     }

@@ -12,9 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using WPF_MVVM_DB_Example.ViewModels;
+using WPF_MVVM_DB_Example.DialogService.ViewModels;
 
-namespace WPF_MVVM_DB_Example.Main.Nursing
+namespace WPF_MVVM_DB_Example.DialogService.Views.Nursing
 {
     /// <summary>
     /// login.xaml에 대한 상호 작용 논리

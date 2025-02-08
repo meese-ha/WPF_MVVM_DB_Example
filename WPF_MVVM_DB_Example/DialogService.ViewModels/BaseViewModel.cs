@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WPF_MVVM_DB_Example.ViewModels
+namespace WPF_MVVM_DB_Example.DialogService.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {

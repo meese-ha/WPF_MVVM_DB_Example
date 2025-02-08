@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
-using WPF_MVVM_DB_Example.ViewModels;
+using WPF_MVVM_DB_Example.Commands;
 
 namespace WPF_MVVM_DB_Example.Commands
 {
