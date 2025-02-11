@@ -1,0 +1,10 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:contexts="clr-namespace:WPF_MVVM_DB_Example.DialogService.ViewModels"
+                    xmlns:controls="clr-namespace:WPF_MVVM_DB_Example.DialogService.Views">
+    
+    <DataTemplate DataType="{x:Type contexts:LoginViewModel}">
+        <controls:NursingMain/>
+    </DataTemplate>
+    
+</ResourceDictionary>

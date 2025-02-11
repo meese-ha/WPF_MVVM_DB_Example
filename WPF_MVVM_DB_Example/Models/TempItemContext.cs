@@ -4,14 +4,18 @@ using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+
 namespace WPF_MVVM_DB_Example.Models
 {
     public partial class TempItemContext : DbContext
     {
 
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("");
+            if (!optionsBuilder.IsConfigured)
+            {
+            }
         }
 
         public TempItemContext()

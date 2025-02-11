@@ -6,10 +6,13 @@
         xmlns:local="clr-namespace:WPF_MVVM_DB_Example.DialogService.Views"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.DataContext>
+        <local:AppViewModel/>
+    </Window.DataContext>
 
     <Grid>
-
-            <Frame x:Name="NUMain" Source="Nursing/NursingMain.xaml" />
+        <ContentControl Content="{Binding Context}" />
+        <!--<Frame x:Name="NUMain" Source="Nursing/NursingMain.xaml" />-->
             <!--<Frame Source="LoginMenu.xaml"></Frame>-->
     </Grid>
 

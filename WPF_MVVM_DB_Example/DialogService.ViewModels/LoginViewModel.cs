@@ -12,10 +12,11 @@ using WPF_MVVM_DB_Example.Models;
 using System.Reflection.Metadata;
 using System.Windows.Navigation;
 using WPF_MVVM_DB_Example.DialogService.Views.Nusring;
+using WPF_MVVM_DB_Example.DialogService.Defines.Interfaces;
 
 namespace WPF_MVVM_DB_Example.DialogService.ViewModels
 {
-    public class LoginViewModel : BaseViewModel
+    public class LoginViewModel : BaseViewModel, IContext
     {
 
         TempItemContext db = new TempItemContext();
@@ -75,10 +76,10 @@ namespace WPF_MVVM_DB_Example.DialogService.ViewModels
 
                 if (CkNum == 1)
                 {
-                    //mainWindow.Show();
-                    NursingMain nursingMain = new NursingMain();
-                    LoginWindow loginWindow = new LoginWindow();
-                    NavigationService.GetNavigationService(nursingMain);
+                    ////mainWindow.Show();
+                    //NursingMain nursingMain = new NursingMain();
+                    //LoginWindow loginWindow = new LoginWindow();
+                    //NavigationService.GetNavigationService(nursingMain);
 
                     //NavigationService.Navigate(new Uri("Page1.xaml", UriKind.Relative));
                     MessageBox.Show("성공");

@@ -11,15 +11,15 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using WPF_MVVM_DB_Example.DialogService.Defines.Iinterface;
-using WPF_MVVM_DB_Example.DialogService.ViewModels;
+using WPF_MVVM_DB_Example.DialogService.Defines.Interfaces;
+using GalaSoft.MvvmLight;
 
 namespace WPF_MVVM_DB_Example.DialogService.Views
 {
     /// <summary>
     /// LoginWindow.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class LoginWindow : Window, IDialog
+    public partial class LoginWindow 
     {
         public LoginWindow()
         {
